@@ -1,0 +1,4 @@
+package: github.com/desource/slack-resource
+import:
+- package: github.com/onsi/ginkgo/ginkgo
+- package: github.com/onsi/gomega

@@ -1,0 +1,5 @@
+/bin
+/etc/ssl
+/vendor
+/tmp
+*.test
