@@ -1,0 +1,14 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source: { repository: quay.io/markus/golang, tag: 1.8-stretch }
+
+inputs:
+- name: slack-resource
+  path: go/src/github.com/desource/slack-resource
+
+outputs:
+- name: build
+
+run:
+  path: go/src/github.com/desource/slack-resource/.concourse/build.sh
