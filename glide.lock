@@ -1,8 +1,10 @@
-hash: 8b8a7be4e257385aadec2c626fc7736e475c393cf60f7786ab1dbecb579b642a
-updated: 2016-09-20T05:07:41.824066568+01:00
+hash: da234b817e4d9f592ee2b22e147f82ffe5aa8e69e2e56b7197e99cafe33e3c4e
+updated: 2017-07-09T00:25:58.012770269-04:00
 imports:
+- name: github.com/nlopes/slack
+  version: ca8436d76f805ec1e682eaae2de3c3a9bc894b0f
 - name: github.com/onsi/ginkgo
-  version: 46c87bb63f2d8d62b3076873b7a84da124da72ce
+  version: a1f616c97771e46da1722d3aa9dcde0a43f55682
   subpackages:
   - config
   - ginkgo
@@ -12,15 +14,18 @@ imports:
   - internal/leafnodes
   - internal/remote
   - internal/spec
+  - internal/spec_iterator
   - internal/specrunner
   - internal/suite
   - internal/testingtproxy
   - internal/writer
   - reporters
   - reporters/stenographer
+  - reporters/stenographer/support/go-colorable
+  - reporters/stenographer/support/go-isatty
   - types
 - name: github.com/onsi/gomega
-  version: d59fa0ac68bb5dd932ee8d24eed631cdd519efc3
+  version: 39a54bd3c3bbfe1c331a9b3207e92134c77ed812
   subpackages:
   - format
   - internal/assertion
@@ -34,9 +39,33 @@ imports:
   - matchers/support/goraph/util
   - types
 testImports:
+- name: golang.org/x/net
+  version: 59a0b19b5533c7977ddeb86b017bf507ed407b12
+  subpackages:
+  - html
+  - html/atom
+  - html/charset
 - name: golang.org/x/sys
-  version: 30de6d19a3bd89a5f38ae4028e23aaa5582648af
+  version: b90f89a1e7a9c1f6b918820b3daa7f08488c8594
   subpackages:
   - unix
+- name: golang.org/x/text
+  version: ab6d1c143672de99b9dfde433b7f6affb278cc74
+  subpackages:
+  - encoding
+  - encoding/charmap
+  - encoding/htmlindex
+  - encoding/internal
+  - encoding/internal/identifier
+  - encoding/japanese
+  - encoding/korean
+  - encoding/simplifiedchinese
+  - encoding/traditionalchinese
+  - encoding/unicode
+  - internal/tag
+  - internal/utf8internal
+  - language
+  - runes
+  - transform
 - name: gopkg.in/yaml.v2
-  version: 31c299268d302dd0aa9a0dcf765a3d58971ac83f
+  version: cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b

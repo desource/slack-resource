@@ -9,7 +9,7 @@ out=${PWD}/build
 
 cd ${src}
 
-tag=$(git describe --exact-match --abbrev=0 || true)
+tag=$(git describe --exact-match --abbrev=0 2>/dev/null|| true)
 tag=${tag:-dev}
 commit=$(git rev-parse --short HEAD)
 
@@ -35,6 +35,18 @@ _build() {
        -o ${out}/slack-resource .
 
     echo ${tag} > ${out}/tag
+
+    mkdir -p ${out}/etc
+
+  cat <<EOF > ${out}/etc/passwd
+root:x:0:0:root:/:/dev/null
+nobody:x:65534:65534:nogroup:/:/dev/null
+EOF
+
+  cat <<EOF > ${out}/etc/group
+root:x:0:
+nogroup:x:65534:
+EOF
 
     cp -r ${src}/Dockerfile ${src}/resource ${out}
 }
