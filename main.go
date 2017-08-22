@@ -143,6 +143,8 @@ var now = func() int {
 }
 
 func execIn(r *Runner, destination string, req InRequest) (resp InResponse) {
+	r.Log("IN %#v", req.Version)
+
 	if req.Version.Timestamp != "" {
 		resp.Version = req.Version
 	} else {
@@ -204,6 +206,7 @@ func execOut(r *Runner, source string, req OutRequest) (resp OutResponse) {
 	}
 	if err != nil {
 		r.Fail("Failed to post message: %s", err)
+		return
 	}
 
 	return
