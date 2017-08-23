@@ -194,18 +194,19 @@ func execOut(r *Runner, source string, req OutRequest) (resp OutResponse) {
 	}
 
 	// verry cude incremental backoff
-	backoffs := []int64{1, 3, 9}
+	backoffs := []int64{1, 3, 9, 27, 81}
 	var err error
-	for attempt := 0; ; attempt += 1 {
+	for attempt := 0; ; attempt++ {
 		if _, _, err = client.PostMessage(req.Source.Channel, "", params); err == nil {
 			break
 		} else if attempt >= len(backoffs) {
 			break
 		}
+		r.Log("Retrying post message: %d", attempt)
 		time.Sleep(time.Duration(backoffs[attempt]) * time.Second)
 	}
 	if err != nil {
-		r.Fail("Failed to post message: %s", err)
+		r.Log("Failed to post message: %s", err)
 		return
 	}
 
